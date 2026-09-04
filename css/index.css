@@ -1,0 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Roboto, sans-serif;
+    background-color: rgb(243, 237, 229);
+}
+main{
+    max-width: 38rem;
+    margin: 2.5rem auto;
+    background-color: #fff;
+    padding: 1.25rem;
+    border: 1px solid #ccc;
+
+}
+#cidade{
+    width: 100%;
+    padding: 0.625rem;
+    font-size: 1rem;
+}
