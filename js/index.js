@@ -22,7 +22,7 @@ async function buscarCidades() {
             elementoCidade.classList.add("cidade");
             elementoCidade.addEventListener("click", function () {
                 buscarPrevisao(dados[i].id);
-            })
+            });
             elementoCidades.appendChild(elementoCidade);
         }
         elementoMensagem.textContent = "";
@@ -32,25 +32,29 @@ async function buscarCidades() {
 }
 async function buscarPrevisao(id) {
     elementoPrevisao.textContent = "Buscando...";
+
     let resposta = await fetch(
         `https://brasilapi.com.br/api/cptec/v1/clima/previsao/${id}`,
     );
     let dados = await resposta.json();
+
     if (resposta.ok) {
         elementoPrevisao.innerHTML = `
-<h2>${dados.cidade} - ${dados.estado}</h2>
-<div class= "dia">
-<p> Data: ${formatarData(dados.clima[0].data)}</p>
-<p> Condição: ${dados.clima[0].condicao_desc}</p>
-<p> Temperatura mínima: ${dados.clima[0].min}</p>
-<p> Temperatura maxíma: ${dados.clima[0].max}</p>
-<p> Índice UV: ${dados.clima[0].indice_uv}</p>
-</div>
-`;
+        <h2>${dados.cidade} - ${dados.estado}</h2>
+        <div class= "dia">
+        <p> Data: ${formatarData(dados.clima[0].data)}</p>
+        <p> Condição: ${dados.clima[0].condicao_desc}</p>
+        <p> Temperatura mínima: ${dados.clima[0].min}</p>
+        <p> Temperatura maxíma: ${dados.clima[0].max}</p>
+        <p> Índice UV: ${dados.clima[0].indice_uv}</p>
+        </div>
+        `;
         console.log(dados);
     } else {
         elementoPrevisao.textContent = dados.message;
     }
+    console.log(dados);
+
 }
 function formatarData(data) {
     let partes = data.split("-");
